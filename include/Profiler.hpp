@@ -103,8 +103,11 @@ namespace profiler
             std::size_t i = 0;
             while ((i = nameFormatted.find_first_of('\\', i)) != std::string::npos)
             {
-                if (nameFormatted[i+1] != '\\')
+                if (nameFormatted[i + 1] != '\\')
+                {
                     nameFormatted.insert(i, "\\");
+                    i += 2;
+                }
             }
 
             json << std::setprecision(3) << std::fixed;
