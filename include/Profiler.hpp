@@ -76,7 +76,7 @@ namespace profiler
         }
         ~Profiler()
         {
-            if(m_CurrentSession)
+            if (m_CurrentSession)
                 EndSession();
         }
 
@@ -99,11 +99,19 @@ namespace profiler
         {
             std::stringstream json{};
 
+            std::string nameFormatted {result.Name};
+            std::size_t i = 0;
+            while ((i = nameFormatted.find_first_of('\\', i)) != std::string::npos)
+            {
+                if (nameFormatted[i+1] != '\\')
+                    nameFormatted.insert(i, "\\");
+            }
+
             json << std::setprecision(3) << std::fixed;
             json << ",{";
             json << R"("cat":"function",)";
             json << "\"dur\":" << (result.Elapsed.count()) << ',';
-            json << R"("name":")" << result.Name << "\",";
+            json << R"("name":")" << nameFormatted << "\",";
             json << R"("ph":"X",)";
             json << "\"pid\":0,";
             json << "\"tid\":" << result.ThreadId << ",";
