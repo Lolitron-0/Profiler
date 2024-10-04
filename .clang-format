@@ -1,0 +1,17 @@
+---
+BasedOnStyle: LLVM
+AlignConsecutiveAssignments:
+  Enabled: true
+AlignConsecutiveShortCaseStatements:
+  Enabled: true
+ColumnLimit: 74
+InsertBraces: true
+PointerAlignment: Left 
+AlwaysBreakTemplateDeclarations: Yes
+PackConstructorInitializers: Never
+Cpp11BracedListStyle: false
+AllowShortLambdasOnASingleLine: None
+AllowShortFunctionsOnASingleLine: None
+AllowShortEnumsOnASingleLine: false
+PenaltyReturnTypeOnItsOwnLine: 1000000
+
